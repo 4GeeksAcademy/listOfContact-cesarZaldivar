@@ -43,7 +43,7 @@ export const AddContacts = () => {
     return (
         <div className="container">
             <form action="" onSubmit={handleSubmit}>
-                <h1 className="text-center">Add new contact</h1>
+                <h1 className="text-center">{params.id ? "Edit contact" : "Add new contact"}</h1>
                 <div>
                     <label htmlFor="" className="form-label">Full name</label>
                     <input
