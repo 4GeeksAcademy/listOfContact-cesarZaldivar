@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 export const AddContacts = () => {
     const params = useParams();
     const navigate = useNavigate();
-    const {store,actions} = useContext(Context);
+    const {store, actions} = useContext(Context);
     const [inputValue, setInputValue] = useState({
         name: "",
         email: "",
@@ -23,17 +23,14 @@ export const AddContacts = () => {
             alert("the inputs can not be empty");
             return
         }
-        let response = null;
         if(!params.id){
-             response = await actions.addContact(inputValue);
+             actions.addContact(inputValue);
+             navigate ("/")
         }else{
-             response = await actions.editContact(inputValue);
+             actions.editContact(inputValue);
+             navigate ("/")
         }
-        if(response){
-            navigate("/")
-        }else{
-            alert("the contact can not be created");
-        }
+       
     }
     useEffect(()=>{
        if(params.id && store.contacts.length > 0){
